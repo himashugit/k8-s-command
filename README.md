@@ -98,3 +98,45 @@ and scale it using replicas=xx
 - To find a pod with selector ex, env=prod
 
 `kubectl get po --selector env=prod`
+
+** Taint and Toleration
+
+- To check if a node has toleration enable or not use. By default master/control plane node has toleration enabled and this is the reason no pod schedule there
+
+`kubectl describe nodes node01 | grep -i taint`
+
+- To schedule a taine on a node use
+
+`kubectl taint NODE NAME KEY_1=VAL_1:TAINT_EFFECT_1(NoSchedule)`
+
+- To check the spec of a pod you can use --recursive option
+
+`kubectl explain po --recursive| less`
+
+### Monitoring cluster
+
+- To check the logs for a pod and multiple container in a pod
+
+`kubectl logs -f podname` `kubectl logs -f podname container name` 
+
+- To deploy a monitoring metric-server
+
+(github)[git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git]
+
+- To check the max cpu utilization for po and node
+
+`kubect top node/po`
+
+#### Deployment
+
+- To check update the deployment use the edit command
+
+`kubectl edit deployment.v1.apps/nginx-deployment`
+
+- To check the rollout status
+
+`kubectl rollout status deployment/nginx-deployment`
+
+- To undo a deployment rollout
+
+`kubectl rollout undo deployment.v1.apps/nginx-deployment`
