@@ -140,3 +140,14 @@ and scale it using replicas=xx
 - To undo a deployment rollout
 
 `kubectl rollout undo deployment.v1.apps/nginx-deployment`
+
+- Config map are used as env var to use with the pod. ex like with Db pod for hostname/port(key:value)To create a config map
+
+`kubectl create configmap NAME [--from-file=[key=]source] [--from-literal=key1=value1] [--dry-run=server|client|none]`
+
+- To create secret use declaratice way as in secret.yml file or use
+
+`kubectl create secret name --from-literal key=value`
+
+- To add a secret in a pod check secretpod.yml file 
+
